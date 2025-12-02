@@ -26,7 +26,6 @@ signed main() {
 
     int candies_in_one_bag = k * m;
     int bags_req = (n + candies_in_one_bag - 1) / candies_in_one_bag;
-
     cout << bags_req << endl;
   }
 
