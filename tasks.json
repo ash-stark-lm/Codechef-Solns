@@ -1,0 +1,81 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++23",
+        "-O2",
+        "-Wall",
+        "-o",
+        "${fileDirname}/build/${fileBasenameNoExtension}",
+        "${file}"
+      ],
+      "windows": {
+        "command": "g++",
+        "args": [
+          "-std=c++17",
+          "${file}",
+          "-o",
+          "${fileDirname}/${fileBasenameNoExtension}.exe"
+        ]
+      },
+      "osx": {
+        "command": "/opt/homebrew/bin/g++-15",
+        "args": [
+          "-std=c++23",
+          "-O2",
+          "-Wall",
+          "-o",
+          "${fileDirname}/build/${fileBasenameNoExtension}",
+          "${file}"
+        ]
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": ["$gcc"]
+    },
+
+    {
+      "label": "compile and run",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++23",
+        "-O2",
+        "-Wall",
+        "-o",
+        "${fileDirname}/build/${fileBasenameNoExtension}",
+        "${file}"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "g++ -std=c++17 \"${file}\" -o \"${fileDirname}/${fileBasenameNoExtension}.exe\" && \"${fileDirname}/${fileBasenameNoExtension}.exe\" < \"${fileDirname}/input.txt\" > \"${fileDirname}/output.txt\""
+        ]
+      },
+      "osx": {
+        "command": "/bin/zsh",
+        "args": [
+          "-lc",
+          "echo 'Compiling...' && /opt/homebrew/bin/g++-15 -std=c++23 -O2 -Wall -o \"${fileDirname}/build/${fileBasenameNoExtension}\" \"${file}\" && echo 'Running...' && \"${fileDirname}/build/${fileBasenameNoExtension}\" < \"${fileDirname}/input.txt\" > \"${fileDirname}/output.txt\" && echo 'Done!'"
+        ]
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
