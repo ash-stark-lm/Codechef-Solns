@@ -1,3 +1,7 @@
+/*
+https://www.codechef.com/practice/course/logical-problems/DIFF800/problems/FILLCANDIES
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
