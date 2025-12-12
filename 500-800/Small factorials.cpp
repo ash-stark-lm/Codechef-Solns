@@ -1,4 +1,5 @@
 // https://www.codechef.com/practice/course/logical-problems/DIFF800/problems/FCTRL2?tab=statement
+
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
@@ -31,7 +32,7 @@ signed main() {
     for (int i = 2; i <= n; i++) {
       int carry = 0;
       for (size_t j = 0; j < digits.size(); j++) {
-        long long prod = digits[j] * i + carry;
+        int prod = digits[j] * i + carry;
         digits[j] = prod % 10;
         carry = prod / 10;
       }
